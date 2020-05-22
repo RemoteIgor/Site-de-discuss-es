@@ -1,0 +1,32 @@
+<%- include('partials/header.ejs'); -%>
+<body> 
+    <%- include('partials/navbar.ejs'); -%>
+
+    <div class="card">
+        <h5 class="card-header display-4">Discuta, sugira e aprenda!</h5>
+        <div class="card-body">
+          <h5 class="card-text">Seja ativo na comunidade. Aprenda com milhares de pessoas e faça conexões da sua
+              casa com o mundo!
+          </h5>
+          <a href="/pergunta" class="btn btn-dark mt-1">Perguntar</a>
+        </div>
+    </div>
+    <br>
+    <h3 class="display-4 text-center">Discussões e ideias:</h3><br>
+    <% perguntas.forEach(pergunta => { %>
+          <div class="card">
+            <h5 class="card-header">
+              <%= pergunta.titulo %>
+            </h5>
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <p><%= pergunta.descricao %></p>
+                <input type="hidden" name="id" value="<%= pergunta.id %>">
+                <a href="/discussao/<%= pergunta.id %>" class="btn btn-info mt-1">Responder</a>
+                <!--<footer class="blockquote-footer text-right">Postado em </footer>-->
+              </blockquote>  
+            </div>
+         </div> 
+    <% }) %>
+</body>
+<%- include('partials/footer.ejs'); -%>
